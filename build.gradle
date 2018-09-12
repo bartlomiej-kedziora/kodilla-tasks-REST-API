@@ -30,5 +30,5 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	runtime('mysql:mysql-connector-java')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
-	compile('org.projectlombok:lombok:1.18.2')
+	compileOnly('org.projectlombok:lombok:1.18.2')
 }
