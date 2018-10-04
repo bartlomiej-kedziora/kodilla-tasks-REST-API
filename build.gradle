@@ -13,6 +13,7 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
+
 //apply plugin: 'war'
 
 group = 'com.crud'
@@ -29,6 +30,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-validation')
 	compile('org.springframework.boot:spring-boot-starter-web')
 //	runtime('mysql:mysql-connector-java')
+    compile('org.postgresql:postgresql')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	compileOnly('org.projectlombok:lombok:1.18.2')
 //	providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
