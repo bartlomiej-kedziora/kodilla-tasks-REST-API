@@ -15,8 +15,10 @@ import org.springframework.web.client.RestTemplate;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import static java.util.Optional.ofNullable;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 
@@ -89,5 +91,19 @@ public class TrelloClientTest {
         assertEquals("1", newCard.getId());
         assertEquals("Test task", newCard.getName());
         assertEquals("http://test.com", newCard.getShortUrl());
+    }
+
+    @Test
+    public void shouldReturnEmptyList() throws URISyntaxException {
+        //Given
+        URI uri = new URI("http://test.com/members/kodilla/boards?key=test&token=test&fields=name,id&lists=all");
+
+        when(restTemplate.getForObject(uri, TrelloBoardDto[].class)).thenReturn(new TrelloBoardDto[0]);
+
+        //When
+        List<TrelloBoardDto> fetchedTrelloBoards = trelloClient.getTrelloBoards();
+
+        //Then
+        assertEquals(0, fetchedTrelloBoards.size());
     }
 }
