@@ -15,10 +15,10 @@ import java.util.List;
 public class TrelloBoardDto {
 
     @JsonProperty("id")
-    private String name;
+    private String id;
 
     @JsonProperty("name")
-    private String id;
+    private String name;
 
     @JsonProperty("lists")
     private List<TrelloListDto> lists;
@@ -26,8 +26,9 @@ public class TrelloBoardDto {
     @Override
     public String toString() {
         return "TrelloBoardDto{" +
-                "name='" + name + '\'' +
-                ", id='" + id + '\'' +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", lists=" + lists +
                 '}';
     }
 }

@@ -37,6 +37,7 @@ public class TrelloClientTest {
         when(trelloConfig.getTrelloApiEndpoint()).thenReturn("http://test.com");
         when(trelloConfig.getTrelloAppKey()).thenReturn("test");
         when(trelloConfig.getTrelloToken()).thenReturn("test");
+        when(trelloConfig.getTrelloUsername()).thenReturn("kodilla");
     }
 
     @Test
@@ -65,7 +66,7 @@ public class TrelloClientTest {
         //Given
         TrelloCardDto trelloCardDto = new TrelloCardDto(
                 "Test task",
-                "Test description",
+                "Test Description",
                 "top",
                 "test_id"
         );
