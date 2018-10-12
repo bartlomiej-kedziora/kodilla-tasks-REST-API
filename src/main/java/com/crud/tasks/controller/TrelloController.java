@@ -6,11 +6,9 @@ import com.crud.tasks.domain.TrelloCardDto;
 import com.crud.tasks.trello.client.TrelloClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import springfox.documentation.annotations.ApiIgnore;
 
 import java.util.List;
 
-@ApiIgnore
 @RestController
 @RequestMapping("/v1/trello")
 @CrossOrigin("*")
