@@ -32,9 +32,16 @@ public class SimpleEmailService {
         mailMessage.setTo(mail.getMailTo());
         mailMessage.setSubject(mail.getSubject());
         mailMessage.setText(mail.getMessage());
-        if(!mail.getToCc().isEmpty()) {
+        if(notEmptyOrNull(mail.getToCc())) {
             mailMessage.setCc(mail.getToCc());
         }
         return mailMessage;
+    }
+
+    private boolean notEmptyOrNull(String cc) {
+        if(cc.isEmpty() || cc.equals(null)) {
+            return false;
+        }
+        return true;
     }
 }
