@@ -39,9 +39,6 @@ public class SimpleEmailService {
     }
 
     private boolean notEmptyOrNull(String cc) {
-        if(cc.isEmpty() || cc.equals(null)) {
-            return false;
-        }
-        return true;
+        return !cc.isEmpty() && cc != null;
     }
 }
