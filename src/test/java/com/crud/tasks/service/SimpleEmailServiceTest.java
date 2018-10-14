@@ -42,6 +42,6 @@ public class SimpleEmailServiceTest {
     }
 
     private boolean notEmptyOrNull(String cc) {
-        return !cc.isEmpty() && cc != null;
+        return cc != null && !cc.isEmpty();
     }
 }
