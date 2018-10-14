@@ -24,17 +24,24 @@ public class SimpleEmailServiceTest {
     @Test
     public void shouldSendEmail() {
         //Given
-        Mail mail = new Mail("podeslijmimaila@gmail.com", "Test", "Test message");
+        Mail mail = new Mail("podeslijmimaila@gmail.com", "Test", "Test message", "");
 
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(mail.getMailTo());
         mailMessage.setSubject(mail.getSubject());
         mailMessage.setText(mail.getMessage());
+        if(notEmptyOrNull(mail.getToCc())) {
+            mailMessage.setCc(mail.getToCc());
+        }
 
         //When
         simpleEmailService.send(mail);
 
         //Then
         verify(javaMailSender, times(1)).send(mailMessage);
+    }
+
+    private boolean notEmptyOrNull(String cc) {
+        return cc != null && !cc.isEmpty();
     }
 }
