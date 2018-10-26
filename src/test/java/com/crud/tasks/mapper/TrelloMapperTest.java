@@ -31,6 +31,12 @@ public class TrelloMapperTest {
 
         //Then
         assertEquals(2, result.size());
+        assertEquals("test_id", result.get(0).getId());
+        assertEquals("test_board", result.get(0).getName());
+        assertEquals(0, result.get(0).getLists().size());
+        assertEquals("test_id2", result.get(1).getId());
+        assertEquals("test_board2", result.get(1).getName());
+        assertEquals(0, result.get(1).getLists().size());
     }
 
     @Test
@@ -45,6 +51,12 @@ public class TrelloMapperTest {
 
         //Then
         assertEquals(2, result.size());
+        assertEquals("test_id", result.get(0).getId());
+        assertEquals("test_board", result.get(0).getName());
+        assertEquals(0, result.get(0).getLists().size());
+        assertEquals("test_id2", result.get(1).getId());
+        assertEquals("test_board2", result.get(1).getName());
+        assertEquals(0, result.get(1).getLists().size());
     }
 
     @Test
@@ -60,6 +72,12 @@ public class TrelloMapperTest {
 
         //Then
         assertEquals(2, result.size());
+        assertEquals("test_id", result.get(0).getId());
+        assertEquals("Test task", result.get(0).getName());
+        assertEquals(true, result.get(0).isClosed());
+        assertEquals("test_id2", result.get(1).getId());
+        assertEquals("Test task2", result.get(1).getName());
+        assertEquals(false, result.get(1).isClosed());
     }
 
     @Test
@@ -75,6 +93,12 @@ public class TrelloMapperTest {
 
         //Then
         assertEquals(2, result.size());
+        assertEquals("test_id", result.get(0).getId());
+        assertEquals("Test task", result.get(0).getName());
+        assertEquals(true, result.get(0).isClosed());
+        assertEquals("test_id2", result.get(1).getId());
+        assertEquals("Test task2", result.get(1).getName());
+        assertEquals(false, result.get(1).isClosed());
     }
 
     @Test
@@ -91,7 +115,10 @@ public class TrelloMapperTest {
         TrelloCard result = trelloMapper.mapToCard(trelloCardDto);
 
         //Then
+        assertEquals("Test task", result.getName());
+        assertEquals("Test Description", result.getDescription());
         assertEquals("top", result.getPos());
+        assertEquals("test_id", result.getListId());
     }
 
     @Test
@@ -108,6 +135,9 @@ public class TrelloMapperTest {
         TrelloCardDto result = trelloMapper.mapToCardDto(trelloCard);
 
         //Then
+        assertEquals("Test task", result.getName());
+        assertEquals("Test Description", result.getDescription());
         assertEquals("top", result.getPos());
+        assertEquals("test_id", result.getListId());
     }
 }
