@@ -1,6 +1,8 @@
 package com.crud.tasks.service;
 
+import com.crud.tasks.domain.TaskDto;
 import com.crud.tasks.domain.TrelloCard;
+import com.crud.tasks.mapper.TaskMapper;
 import com.crud.tasks.trello.config.AdminConfig;
 import com.crud.tasks.trello.config.CompanyConfig;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +19,12 @@ public class MailCreatorService {
 
     @Autowired
     private AdminConfig adminConfig;
-
     @Autowired
     private CompanyConfig companyConfig;
-
+    @Autowired
+    private DbService service;
+    @Autowired
+    private TaskMapper taskMapper;
     @Autowired
     @Qualifier("templateEngine")
     private TemplateEngine templateEngine;
@@ -31,6 +35,10 @@ public class MailCreatorService {
         functionality.add("You can manage your tasks");
         functionality.add("Provides connection with Trello Acount");
         functionality.add("Application allows sending tasks to Trello");
+
+        List<TaskDto> tasks = taskMapper.mapToTaskDtoList(service.getAllTasks());
+        int quantity = tasks.size();
+
         Context context = new Context();
         context.setVariable("message", message);
         context.setVariable("tasks_url", "http://localhost:8888/crud");
@@ -42,6 +50,7 @@ public class MailCreatorService {
         context.setVariable("show_button", false);
         context.setVariable("is_friend", true);
         context.setVariable("application_functionality", functionality);
+        context.setVariable("amount_of_tasks", "You have: " + quantity + "tasks on your board.");
         return templateEngine.process("mail/created-trello-card-mail", context);
     }
 }
